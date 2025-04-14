@@ -10,9 +10,9 @@ const getRandomMove = (board) => {
 
 const checkWinner = (board) => {
   const combos = [
-    [0,1,2],[3,4,5],[6,7,8],
-    [0,3,6],[1,4,7],[2,5,8],
-    [0,4,8],[2,4,6]
+    [0, 1, 2], [3, 4, 5], [6, 7, 8],
+    [0, 3, 6], [1, 4, 7], [2, 5, 8],
+    [0, 4, 8], [2, 4, 6]
   ];
   for (let combo of combos) {
     const [a, b, c] = combo;
@@ -55,6 +55,12 @@ const GameBoard = ({ mode, playerNames, goBack }) => {
 
   const currentPlayer = turn === 'X' ? playerNames.player1 : playerNames.player2;
 
+  const getWinnerName = () => {
+    if (winnerInfo.winner === 'X') return playerNames.player1;
+    if (winnerInfo.winner === 'O') return playerNames.player2;
+    return 'Draw';
+  };
+
   useEffect(() => {
     const result = checkWinner(board);
     if (result) {
@@ -70,7 +76,6 @@ const GameBoard = ({ mode, playerNames, goBack }) => {
         if (aiLevel === 'easy') {
           move = getRandomMove(board);
         } else if (aiLevel === 'medium') {
-          // Block winning moves
           move = getMediumMove(board);
         } else {
           move = minimax(board, true, 'O', 'X').index;
@@ -81,7 +86,6 @@ const GameBoard = ({ mode, playerNames, goBack }) => {
   }, [board, turn]);
 
   const getMediumMove = (board) => {
-    // Block or win
     const possible = board.map((val, i) => (val === null ? i : null)).filter(v => v !== null);
     for (let move of possible) {
       const temp = [...board];
@@ -117,7 +121,7 @@ const GameBoard = ({ mode, playerNames, goBack }) => {
     <div className="game-container">
       {winnerInfo?.winner !== 'Draw' && winnerInfo?.winner && <Confetti />}
       <h2>{currentPlayer}'s Turn ({turn})</h2>
-      
+
       <div className="scoreboard">
         <span className={turn === 'X' ? 'active' : ''}>
           {playerNames.player1} (X): {scores.X}
@@ -158,7 +162,9 @@ const GameBoard = ({ mode, playerNames, goBack }) => {
 
       {winnerInfo && (
         <div className="winner-msg">
-          {winnerInfo.winner === 'Draw' ? "It's a draw!" : `${currentPlayer} Wins! 🎉`}
+          {winnerInfo.winner === 'Draw'
+            ? "It's a draw!"
+            : `${getWinnerName()} Wins! 🎉`}
         </div>
       )}
     </div>
