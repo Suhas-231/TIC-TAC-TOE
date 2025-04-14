@@ -1,0 +1,186 @@
+/* Global Reset & Layout */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5f8fa;
+  color: #1a202c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+/* Header */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  animation: fadeIn 1s ease-in;
+}
+
+/* Button Styles */
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 1rem;
+  background: #3182ce;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background: #2b6cb0;
+  transform: scale(1.05);
+}
+
+/* Landing Page */
+.landing {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+/* Input Fields */
+input {
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  width: 220px;
+}
+
+/* Scoreboard */
+.scoreboard {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 20px 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.scoreboard span {
+  background: #edf2f7;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.scoreboard span.active {
+  background: #e6fffa;
+  color: #2c7a7b;
+  font-weight: bold;
+  transform: scale(1.05);
+}
+
+/* Game Board */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 12px;
+  margin: 20px 0;
+  animation: popUp 0.6s ease;
+}
+
+.cell {
+  background: #fff;
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.cell:hover {
+  background: #e2e8f0;
+  transform: scale(1.05);
+}
+
+.cell.filled {
+  cursor: default;
+  color: #4a5568;
+}
+
+/* Winning Highlight */
+.winner {
+  background: #bee3f8 !important;
+  color: #2b6cb0 !important;
+}
+
+/* Winner Message */
+.winner-msg {
+  font-size: 1.8rem;
+  margin-top: 20px;
+  color: #2d3748;
+  font-weight: bold;
+  animation: fadeIn 1s ease-in;
+}
+
+/* Difficulty Dropdown */
+.difficulty-selector {
+  margin-bottom: 10px;
+}
+
+select {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popUp {
+  from { transform: scale(0.6); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .board {
+    grid-template-columns: repeat(3, 80px);
+    grid-template-rows: repeat(3, 80px);
+  }
+
+  .cell {
+    font-size: 2rem;
+  }
+
+  .scoreboard {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  input, select {
+    width: 180px;
+  }
+}

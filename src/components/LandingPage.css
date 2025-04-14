@@ -1,0 +1,91 @@
+/* src/components/LandingPage.css */
+.landing-container {
+    max-width: 400px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.8s ease;
+  }
+  
+  .landing-container h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #2d3748;
+  }
+  
+  /* Toggle Buttons */
+  .mode-toggle {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .mode-toggle button {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #4299e1;
+    background-color: #e6f0fa;
+    color: #2b6cb0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+  }
+  
+  .mode-toggle button.active {
+    background-color: #4299e1;
+    color: white;
+  }
+  
+  .mode-toggle button:hover {
+    background-color: #3182ce;
+    color: white;
+  }
+  
+  /* Input Fields */
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .input-group input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 8px;
+    outline: none;
+    transition: border 0.3s ease;
+  }
+  
+  .input-group input:focus {
+    border-color: #4299e1;
+  }
+  
+  /* Start Button */
+  .start-btn {
+    width: 100%;
+    padding: 12px;
+    background: #38a169;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  .start-btn:hover {
+    background: #2f855a;
+    transform: scale(1.03);
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
